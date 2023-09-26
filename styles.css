@@ -1,0 +1,35 @@
+/*#controls {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: flex-end;*/
+/*}*/
+
+#move-controls{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*width: 250px;*/
+  width: max-content;
+  z-index: 50;
+}
+.entity{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+}
+.player {
+  background: aqua;
+}
+.monster {
+  background: brown;
+}
+.died {
+  background: gray;
+}
