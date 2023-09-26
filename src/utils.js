@@ -2,6 +2,12 @@
 function render(player, monsters) {
     player.render()
     monsters.forEach(monster => {monster.render()})
+    if (!player.isAlive()) {
+        const youDied = document.createElement('div')
+        youDied.innerHTML = '<p>YOU DIED</p><a href=".">Начать заново</a>'
+        youDied.classList.add("you-died")
+        document.body.appendChild(youDied)
+    }
 }
 
 

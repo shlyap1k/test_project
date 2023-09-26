@@ -89,6 +89,8 @@ class Entity {
 
     render() {
         this.entityElement.innerHTML = ''
+        let nameElement = document.createElement('div');
+        nameElement.innerText = `name: ${this.name}`
         let hpElement = document.createElement('div');
         hpElement.innerText = `hp: ${this.health} / ${this.max_health}`
         let defenseElement = document.createElement('div');
@@ -97,6 +99,7 @@ class Entity {
         damageElement.innerText = `damage: ${this.damage}`
         let healsCountElement = document.createElement('div');
         healsCountElement.innerText = `healsCount: ${this.healsCount}`
+        this.entityElement.appendChild(nameElement)
         this.entityElement.appendChild(hpElement)
         this.entityElement.appendChild(healsCountElement)
         this.entityElement.appendChild(defenseElement)
