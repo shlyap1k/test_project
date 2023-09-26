@@ -75,18 +75,17 @@ class Entity {
     }
 
     attack(entity) {
-
-        let attackModifier = this.damage - entity.defense + 1;
-        attackModifier = attackModifier >= 1 ? attackModifier : 1.0
-        informing(`${this.name} атакует ${entity.name}. Модификатор атаки: ${attackModifier}`)
         if (this.distance(entity) <= 100) {
+            let attackModifier = this.damage - entity.defense + 1;
+            attackModifier = attackModifier >= 1 ? attackModifier : 1.0
+            informing(`${this.name} атакует ${entity.name}. Модификатор атаки: ${attackModifier}`)
             let d = this.dice(1, 6, attackModifier)
             console.log(d)
             if (d) {
-                informing(`${this.name} удачно бросает игральный кубик и наносит ${this.damage} урон ${attackModifier}.`)
+                informing(`${this.name} удачно бросает игральный кубик и наносит ${this.damage} урон  ${entity.name}.`)
                 entity.getDamage(this.damage)
             } else {
-                informing(`${this.name} неудачно бросает игральный кубик и не наносит урона по ${attackModifier}.`)
+                informing(`${this.name} неудачно бросает игральный кубик и не наносит урона по ${entity.name}.`)
             }
         }
     }
