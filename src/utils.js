@@ -1,3 +1,11 @@
+// Отключение кнопок
+function turnOffButtons() {
+    const buttons = document.getElementsByTagName("button")
+    Array.from(buttons).forEach(button => {
+        button.setAttribute("disabled", "")
+    })
+}
+
 // Функция для отрисовки игрока и монстров
 function render(player, monsters) {
     player.render()
@@ -7,6 +15,7 @@ function render(player, monsters) {
         youDied.innerHTML = '<p>YOU DIED</p><a href=".">Начать заново</a>'
         youDied.classList.add("you-died")
         document.body.appendChild(youDied)
+        turnOffButtons()
     }
 }
 
