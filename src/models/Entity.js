@@ -54,6 +54,7 @@ class Entity {
             return Infinity
     }
 
+    // Получить урон
     getDamage(damage) {
         if (damage < 0) {
             throw new Error("Damage cannot be negative");
@@ -68,7 +69,7 @@ class Entity {
     dice(min, max, attackModifier) {
         let d
         for (let i = 0; i < attackModifier; i++) {
-            if ((Math.random() * (max - min) + min) >= 5)
+            if (randomRange(1, 6) >= 5)
                 return true
         }
         return false
@@ -76,14 +77,14 @@ class Entity {
 
     attack(entity) {
         if (this.distance(entity) <= 100) {
+            let damage = randomRange(Math.min(Math.max(this.damage-10, 0), 1), this.damage)
             let attackModifier = this.damage - entity.defense + 1;
             attackModifier = attackModifier >= 1 ? attackModifier : 1.0
             informing(`${this.name} атакует ${entity.name}. Модификатор атаки: ${attackModifier}`)
             let d = this.dice(1, 6, attackModifier)
-            console.log(d)
             if (d) {
-                informing(`${this.name} удачно бросает игральный кубик и наносит ${this.damage} урон  ${entity.name}.`)
-                entity.getDamage(this.damage)
+                informing(`${this.name} удачно бросает игральный кубик и наносит ${damage} урон  ${entity.name}.`)
+                entity.getDamage(damage)
             } else {
                 informing(`${this.name} неудачно бросает игральный кубик и не наносит урона по ${entity.name}.`)
             }

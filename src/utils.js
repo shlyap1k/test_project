@@ -46,3 +46,8 @@ function findNearestMonster(player, monsters) {
 
     return nearestMonster;
 }
+
+// Рандом в диапазоне от min до max
+function randomRange(min, max) {
+    return Math.round(Math.random() * ((max - min) + min));
+}
