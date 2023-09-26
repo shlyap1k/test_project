@@ -44,11 +44,10 @@ class Entity {
 
     die () {
         this.entityElement.classList.add('died')
+        informing(`${this.name} умирает`)
     }
 
     distance(entity) {
-        console.log(entity)
-        console.log('is alive:', entity.isAlive())
         if (this.isAlive())
             return Math.sqrt((entity.point[0] - this.point[0]) ** 2 + (entity.point[1] - this.point[1]) ** 2)
         else
@@ -78,12 +77,17 @@ class Entity {
     attack(entity) {
 
         let attackModifier = this.damage - entity.defense + 1;
-        console.log('attack modifier', attackModifier)
         attackModifier = attackModifier >= 1 ? attackModifier : 1.0
-        console.log('attack modifier', attackModifier)
+        informing(`${this.name} атакует ${entity.name}. Модификатор атаки: ${attackModifier}`)
         if (this.distance(entity) <= 100) {
-            if (this.dice(1, 6, attackModifier))
-                entity.getDamage(this.damage) // TODO: сделать диапазон дамага и брать рандомный
+            let d = this.dice(1, 6, attackModifier)
+            console.log(d)
+            if (d) {
+                informing(`${this.name} удачно бросает игральный кубик и наносит ${this.damage} урон ${attackModifier}.`)
+                entity.getDamage(this.damage)
+            } else {
+                informing(`${this.name} неудачно бросает игральный кубик и не наносит урона по ${attackModifier}.`)
+            }
         }
     }
 

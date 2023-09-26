@@ -1,3 +1,14 @@
+#info {
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 500px;
+  background: gray;
+  padding: 50px;
+}
+
 .you-died {
   position: fixed;
   display: flex;
@@ -20,14 +31,17 @@
   font-size: 2em;
 }
 
+#controls {
+  position: fixed;
+  z-index: 50;
+}
+
 #move-controls{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*width: 250px;*/
   width: max-content;
-  z-index: 50;
 }
 .entity{
   position: absolute;

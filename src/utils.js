@@ -1,3 +1,11 @@
+//Вывод информации об игре
+function informing(text) {
+    const info = document.getElementById("info")
+    const new_info = document.createElement("p")
+    new_info.innerText = text
+    info.appendChild(new_info)
+}
+
 // Отключение кнопок
 function turnOffButtons() {
     const buttons = document.getElementsByTagName("button")
