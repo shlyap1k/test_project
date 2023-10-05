@@ -1,5 +1,5 @@
 //Вывод информации об игре
-function informing(text) {
+export function informing(text) {
     const info = document.getElementById("info")
     const new_info = document.createElement("p")
     new_info.innerText = text
@@ -7,7 +7,7 @@ function informing(text) {
 }
 
 // Отключение кнопок
-function turnOffButtons() {
+export function turnOffButtons() {
     const buttons = document.getElementsByTagName("button")
     Array.from(buttons).forEach(button => {
         button.setAttribute("disabled", "")
@@ -15,7 +15,7 @@ function turnOffButtons() {
 }
 
 // Функция для отрисовки игрока и монстров
-function render(player, monsters) {
+export function render(player, monsters) {
     player.render()
     monsters.forEach(monster => {monster.render()})
     if (!player.isAlive()) {
@@ -29,7 +29,7 @@ function render(player, monsters) {
 
 
 // Функция для нахождения ближайшего живого монстра среди всех монстров
-function findNearestMonster(player, monsters) {
+export function findNearestMonster(player, monsters) {
     let nearestMonster = null;
     let nearestDistance = Infinity;
 
@@ -48,6 +48,6 @@ function findNearestMonster(player, monsters) {
 }
 
 // Рандом в диапазоне от min до max
-function randomRange(min, max) {
+export function randomRange(min, max) {
     return Math.round(Math.random() * ((max - min) + min));
 }

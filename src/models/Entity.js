@@ -1,5 +1,7 @@
 // Базовый класс для существ
-class Entity {
+import {informing, randomRange} from "../utils.js";
+
+export class Entity {
     constructor(name, health, damage, defense, healsCount, point, type) {
         this.name = name;
         this.health = health;
@@ -15,7 +17,6 @@ class Entity {
         this.entityElement.setAttribute('id', this.name);
         document.body.appendChild(this.entityElement);
         this.render();
-
     }
 
     move(dx, dy) {
@@ -36,10 +37,7 @@ class Entity {
     }
 
     isAlive() {
-        if ( this.health === 0 ){
-            return false
-        }
-        return true
+        return this.health !== 0;
     }
 
     die () {
@@ -67,7 +65,6 @@ class Entity {
     }
 
     dice(min, max, attackModifier) {
-        let d
         for (let i = 0; i < attackModifier; i++) {
             if (randomRange(1, 6) >= 5)
                 return true
